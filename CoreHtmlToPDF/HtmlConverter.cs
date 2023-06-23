@@ -22,6 +22,7 @@ namespace CoreHtmlToPDF
             if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
             {
                 toolFilepath = Path.Combine(directory, toolFilename + ".exe");
+                //toolFilepath = Path.Combine(@"C:\Program Files\wkhtmltopdf\bin", toolFilename + ".exe");
 
                 if (!File.Exists(toolFilepath))
                 {
@@ -77,11 +78,11 @@ namespace CoreHtmlToPDF
         /// <param name="format">Output image format</param>
         /// <param name="quality">Output image quality 1-100</param>
         /// <returns></returns>
-        public byte[] FromHtmlString(string html, int width, int height, int quality)
+        public byte[] FromHtmlString(string html, int width, int height)
         {
             var filename = Path.Combine(directory, $"{Guid.NewGuid()}.html");
             File.WriteAllText(filename, html);
-            var bytes = FromUrl(filename, width, height, quality);
+            var bytes = FromUrl(filename, width, height);
             File.Delete(filename);
             return bytes;
         }
@@ -94,7 +95,7 @@ namespace CoreHtmlToPDF
         /// <param name="format">Output image format</param>
         /// <param name="quality">Output image quality 1-100</param>
         /// <returns></returns>
-        public byte[] FromUrl(string url, int width, int height, int quality)
+        public byte[] FromUrl(string url, int width, int height)
         {
             var filename = Path.Combine(directory, $"{Guid.NewGuid().ToString()}.pdf");
 
@@ -102,11 +103,11 @@ namespace CoreHtmlToPDF
 
             if (IsLocalPath(url))
             {
-                args = $"--quality {quality} --page-width {width} --page-height {height} \"{url}\" \"{filename}\"";
+                args = $" --page-height {height} --page-width {width} \"{url}\" \"{filename}\"";
             }
             else
             {
-                args = $"--quality {quality} --page-width {width} --page-height {height} {url} \"{filename}\"";
+                args = $"--page-height {height} --page-width {width} {url} \"{filename}\"";
             }
 
             Process process = Process.Start(new ProcessStartInfo(toolFilepath, args)
