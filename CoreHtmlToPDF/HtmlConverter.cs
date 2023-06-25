@@ -22,7 +22,6 @@ namespace CoreHtmlToPDF
             if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
             {
                 toolFilepath = Path.Combine(directory, toolFilename + ".exe");
-                //toolFilepath = Path.Combine(@"C:\Program Files\wkhtmltopdf\bin", toolFilename + ".exe");
 
                 if (!File.Exists(toolFilepath))
                 {
@@ -71,12 +70,11 @@ namespace CoreHtmlToPDF
         }
 
         /// <summary>
-        /// Converts HTML string to image
+        /// Converts a HTML-String into an PDF-File as Base64String.
         /// </summary>
-        /// <param name="html">HTML string</param>
-        /// <param name="width">Output document width</param>
-        /// <param name="format">Output image format</param>
-        /// <param name="quality">Output image quality 1-100</param>
+        /// <param name="html">Raw HTLM as String.</param>
+        /// <param name="width">Width in mm.</param>
+        /// <param name="height">Height in mm</param>
         /// <returns></returns>
         public byte[] FromHtmlString(string html, int width, int height)
         {
@@ -88,12 +86,11 @@ namespace CoreHtmlToPDF
         }
 
         /// <summary>
-        /// Converts HTML page to image
+        /// Converts a HTML-Page into an PDF-File as Base64String.
         /// </summary>
-        /// <param name="url">Valid http(s):// URL</param>
-        /// <param name="width">Output document width</param>
-        /// <param name="format">Output image format</param>
-        /// <param name="quality">Output image quality 1-100</param>
+        /// <param name="url">Valid http(s)://example.com URL</param>
+        /// <param name="width">Width in mm.</param>
+        /// <param name="height">Height in mm</param>
         /// <returns></returns>
         public byte[] FromUrl(string url, int width, int height)
         {
@@ -103,11 +100,11 @@ namespace CoreHtmlToPDF
 
             if (IsLocalPath(url))
             {
-                args = $" --page-height {height} --page-width {width} \"{url}\" \"{filename}\"";
+                args = $" --page-height {height} --page-width {width} --disable-smart-shrinking --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 \"{url}\" \"{filename}\"";
             }
             else
             {
-                args = $"--page-height {height} --page-width {width} {url} \"{filename}\"";
+                args = $"--page-height {height} --page-width {width} --disable-smart-shrinking --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 {url} \"{filename}\"";
             }
 
             Process process = Process.Start(new ProcessStartInfo(toolFilepath, args)
