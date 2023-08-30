@@ -1,0 +1,8 @@
+die ladeliste muss sortiert werden: 
+1. art station beladung entladung
+2. shift + name 1 staion klicken
+3. erste zeile auswählen und strg + n damit die laufende nummer vergeben wird
+
+falls die sundungen falsch übergeben werden, einfach im m3 neu übergeben
+
+layoutverwaltung layout speicher. wird im m3 nutzer gespeichert und ist somit "global" gültig

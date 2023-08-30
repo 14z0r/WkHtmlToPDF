@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
-namespace CoreHtmlToPDF
+namespace WkHtmlToPDF
 {
     /// <summary>
     /// Html Converter. Converts HTML string and URLs to image bytes
@@ -73,14 +73,15 @@ namespace CoreHtmlToPDF
         /// Converts a HTML-String into an PDF-File as Base64String.
         /// </summary>
         /// <param name="html">Raw HTLM as String.</param>
+        /// <param name="encoding">Set the default text encoding, for input.</param>
         /// <param name="width">Width in mm.</param>
         /// <param name="height">Height in mm</param>
         /// <returns></returns>
-        public byte[] FromHtmlString(string html, int width, int height)
+        public byte[] FromHtmlString(string html, string encoding, int width, int height)
         {
             var filename = Path.Combine(directory, $"{Guid.NewGuid()}.html");
             File.WriteAllText(filename, html);
-            var bytes = FromUrl(filename, width, height);
+            var bytes = FromUrl(filename, encoding, width, height);
             File.Delete(filename);
             return bytes;
         }
@@ -89,10 +90,11 @@ namespace CoreHtmlToPDF
         /// Converts a HTML-Page into an PDF-File as Base64String.
         /// </summary>
         /// <param name="url">Valid http(s)://example.com URL</param>
+        /// <param name="encoding">Set the default text encoding, for input.</param>
         /// <param name="width">Width in mm.</param>
         /// <param name="height">Height in mm</param>
         /// <returns></returns>
-        public byte[] FromUrl(string url, int width, int height)
+        public byte[] FromUrl(string url, string encoding, int width, int height)
         {
             var filename = Path.Combine(directory, $"{Guid.NewGuid().ToString()}.pdf");
 
@@ -100,11 +102,11 @@ namespace CoreHtmlToPDF
 
             if (IsLocalPath(url))
             {
-                args = $" --page-height {height} --page-width {width} --disable-smart-shrinking --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 \"{url}\" \"{filename}\"";
+                args = $" --encoding {encoding} --page-height {height} --page-width {width} --disable-smart-shrinking --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 \"{url}\" \"{filename}\"";
             }
             else
             {
-                args = $"--page-height {height} --page-width {width} --disable-smart-shrinking --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 {url} \"{filename}\"";
+                args = $"--encoding {encoding} --page-height {height} --page-width {width} --disable-smart-shrinking --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 {url} \"{filename}\"";
             }
 
             Process process = Process.Start(new ProcessStartInfo(toolFilepath, args)
