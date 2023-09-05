@@ -77,11 +77,11 @@ namespace WkHtmlToPDF
         /// <param name="width">Width in mm.</param>
         /// <param name="height">Height in mm</param>
         /// <returns></returns>
-        public byte[] FromHtmlString(string html, string encoding, int width, int height)
+        public byte[] FromHtmlString(string html, string encoding, int width, int height, int margin_left, int margin_top, int margin_right, int margin_bottom)
         {
             var filename = Path.Combine(directory, $"{Guid.NewGuid()}.html");
             File.WriteAllText(filename, html);
-            var bytes = FromUrl(filename, encoding, width, height);
+            var bytes = FromUrl(filename, encoding, width, height, margin_left, margin_top, margin_right, margin_bottom);
             File.Delete(filename);
             return bytes;
         }
@@ -94,7 +94,7 @@ namespace WkHtmlToPDF
         /// <param name="width">Width in mm.</param>
         /// <param name="height">Height in mm</param>
         /// <returns></returns>
-        public byte[] FromUrl(string url, string encoding, int width, int height)
+        public byte[] FromUrl(string url, string encoding, int width, int height, int margin_left, int margin_top, int margin_right, int margin_bottom)
         {
             var filename = Path.Combine(directory, $"{Guid.NewGuid().ToString()}.pdf");
 
@@ -102,11 +102,11 @@ namespace WkHtmlToPDF
 
             if (IsLocalPath(url))
             {
-                args = $" --encoding {encoding} --page-height {height} --page-width {width} --disable-smart-shrinking --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 \"{url}\" \"{filename}\"";
+                args = $" --encoding {encoding} --page-height {height} --page-width {width} --disable-smart-shrinking --margin-bottom {margin_bottom} --margin-left {margin_left} --margin-right {margin_right} --margin-top {margin_top} \"{url}\" \"{filename}\"";
             }
             else
             {
-                args = $"--encoding {encoding} --page-height {height} --page-width {width} --disable-smart-shrinking --margin-bottom 0 --margin-left 0 --margin-right 0 --margin-top 0 {url} \"{filename}\"";
+                args = $"--encoding {encoding} --page-height {height} --page-width {width} --disable-smart-shrinking --margin-bottom {margin_bottom} --margin-left {margin_left} --margin-right {margin_right} --margin-top {margin_top} {url} \"{filename}\"";
             }
 
             Process process = Process.Start(new ProcessStartInfo(toolFilepath, args)

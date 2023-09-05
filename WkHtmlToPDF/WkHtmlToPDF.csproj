@@ -4,14 +4,16 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>CoreHtmlToPdf</Title>
-    <PackageProjectUrl>https://github.com/14z0r/CoreHtmlToPDF</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/14z0r/CoreHtmlToPDF</RepositoryUrl>
+    <Title>WkHtmlToPdf</Title>
+    <PackageProjectUrl>https://github.com/14z0r/WkHtmlToPDF</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/14z0r/WkHtmlToPDF</RepositoryUrl>
 	 <Authors>Timo Bachmann</Authors>
 	 <PackageLicenseExpression>MIT</PackageLicenseExpression>
 	 <PackageReadmeFile>nuget_readme.md</PackageReadmeFile>
 	 <AssemblyName>WkHtmlToPDF</AssemblyName>
 	 <RootNamespace>WkHtmlToPDF</RootNamespace>
+	 <Version>1.0.1</Version>
+	 <PackageId>WkHtmlToPDFDotNetStandard</PackageId>
   </PropertyGroup>
 	<ItemGroup>
 		<EmbeddedResource Include="wkhtmltopdf.exe">

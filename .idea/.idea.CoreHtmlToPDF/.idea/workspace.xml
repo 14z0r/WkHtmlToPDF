@@ -10,12 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7d5ced0-61a9-47b8-9984-9a4587b87067" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.CoreHtmlToPDF/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WkHtmlToPDF/WkHtmlToPDF.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoreHtmlToPDF.sln" beforeDir="false" afterPath="$PROJECT_DIR$/WkHtmlToPDF.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoreHtmlToPDF/CoreHtmlToPDF.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoreHtmlToPDF/HtmlConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WkHtmlToPDF/HtmlConverter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoreHtmlToPDF/wkhtmltopdf.exe" beforeDir="false" afterPath="$PROJECT_DIR$/WkHtmlToPDF/wkhtmltopdf.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CoreHtmlToPDF/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CoreHtmlToPDF/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +24,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
   "associatedIndex": 6
@@ -98,14 +94,26 @@
       <option name="presentableId" value="Default" />
       <updated>1689246908619</updated>
       <workItem from="1689246908925" duration="776000" />
-      <workItem from="1693383870120" duration="388000" />
+      <workItem from="1693383870120" duration="725000" />
     </task>
+    <task id="LOCAL-00001" summary="Add encoding prameter and rename projet to WkHtmlToPDF.">
+      <option name="closed" value="true" />
+      <created>1693384429054</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1693384429054</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Add encoding prameter and rename projet to WkHtmlToPDF." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add encoding prameter and rename projet to WkHtmlToPDF." />
   </component>
 </project>
